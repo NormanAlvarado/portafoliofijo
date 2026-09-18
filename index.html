@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Norman Alvarado | Front-End Developer</title>
+  <link rel="icon" href="https://img.icons8.com/?size=100&id=TOm8IWyqS5Ne&format=png&color=000000" type="image/png">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Poppins', 'sans-serif'],
+            mono: ['Space Mono', 'monospace'],
+          },
+          colors: {
+            primary: '#10b981',
+            secondary: '#4ade80',
+            dark: '#0f172a',
+            light: '#f8fafc',
+          },
+        },
+      },
+    }
+  </script>
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-light dark:bg-dark text-dark dark:text-light transition-colors duration-300">
+  <!-- Cursor -->
+  <div class="cursor-dot hidden lg:block"></div>
+  <div class="cursor-outline hidden lg:block"></div>
+
+  <!-- Header -->
+  <header class="fixed w-full top-0 z-50 backdrop-blur-md">
+    <div class="container mx-auto px-4 py-3">
+      <nav class="flex justify-between items-center">
+        <!-- Logo -->
+        <a href="#" class="text-2xl font-bold font-mono relative group logo-text">
+          <span class="text-primary">N</span>orman
+          <span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
+        </a>
+        
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="#about" class="nav-link" data-lang-en="About" data-lang-es="Sobre Mí">About</a>
+          <a href="#skills" class="nav-link" data-lang-en="Skills" data-lang-es="Habilidades">Skills</a>
+          <a href="#education" class="nav-link" data-lang-en="Education" data-lang-es="Educación">Education</a>
+          <a href="#experience" class="nav-link" data-lang-en="Experience" data-lang-es="Experiencia">Experience</a>
+          <a href="#projects" class="nav-link" data-lang-en="Projects" data-lang-es="Proyectos">Projects</a>
+          <a href="#contact" class="nav-link" data-lang-en="Contact" data-lang-es="Contacto">Contact</a>
+        </div>
+        
+        <!-- Controls -->
+        <div class="flex items-center space-x-4">
+          <!-- Language Dropdown -->
+          <div id="langDropdownContainer" class="relative">
+            <button id="langToggle" class="flex items-center space-x-1 hover:text-primary transition-colors" aria-expanded="false">
+              <span class="current-lang font-mono text-xs">EN</span>
+              <i class="fa-solid fa-globe text-sm"></i>
+              <i class="fa-solid fa-chevron-down text-xs ml-1"></i>
+            </button>
+            <div id="langDropdown" class="language-dropdown">
+              <button class="language-option" data-lang="en">
+                <span class="language-flag-small">🇺🇸</span>
+                <span>English</span>
+              </button>
+              <button class="language-option" data-lang="es">
+                <span class="language-flag-small">🇪🇸</span>
+                <span>Español</span>
+              </button>
+            </div>
+          </div>
+          
+          <!-- Theme Toggle -->
+          <button id="themeToggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+            <svg class="sun-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+            </svg>
+            <svg class="moon-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+            </svg>
+          </button>
+          
+          <!-- Mobile Menu Toggle -->
+          <button id="mobileMenuToggle" class="md:hidden text-xl" aria-label="Toggle Menu">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Menu -->
+  <div id="mobileMenu" class="fixed inset-0 z-40 bg-light dark:bg-dark transform translate-x-full transition-transform duration-300 ease-in-out">
+    <div class="h-full flex flex-col p-6">
+      <div class="flex justify-between items-center mb-8">
+        <a href="#" class="text-2xl font-bold font-mono">
+          <span class="text-primary">N</span>orman
+        </a>
+        <button id="mobileMenuClose" class="text-xl">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="flex flex-col space-y-6 text-xl">
+        <a href="#about" class="mobile-nav-link" data-lang-en="About" data-lang-es="Sobre Mí">About</a>
+        <a href="#skills" class="mobile-nav-link" data-lang-en="Skills" data-lang-es="Habilidades">Skills</a>
+        <a href="#education" class="mobile-nav-link" data-lang-en="Education" data-lang-es="Educación">Education</a>
+        <a href="#experience" class="mobile-nav-link" data-lang-en="Experience" data-lang-es="Experiencia">Experience</a>
+        <a href="#projects" class="mobile-nav-link" data-lang-en="Projects" data-lang-es="Proyectos">Projects</a>
+        <a href="#contact" class="mobile-nav-link" data-lang-en="Contact" data-lang-es="Contacto">Contact</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center pt-20 overflow-hidden relative">
+      <div class="absolute -z-10 w-full h-full">
+        <div class="absolute top-1/3 left-1/4 w-48 h-48 bg-primary/20 rounded-full filter blur-3xl animate-pulse"></div>
+        <div class="absolute bottom-1/4 right-1/3 w-72 h-72 bg-secondary/20 rounded-full filter blur-3xl animate-pulse" style="animation-delay: 2s"></div>
+      </div>
+      
+      <div class="container mx-auto px-4 py-12">
+        <div class="flex flex-col lg:flex-row items-center">
+          <div class="lg:w-1/2 lg:pr-12 mb-12 lg:mb-0 hero-content">
+            <div class="glitch-wrapper">
+              <h1 class="text-5xl md:text-7xl font-bold mb-6 glitch" data-lang-en="Norman Alvarado" data-lang-es="Norman Alvarado">
+                Norman Alvarado
+              </h1>
+            </div>
+            <h2 class="text-3xl md:text-5xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
+              Front-End Developer
+            </h2>
+            <p class="text-xl mb-8 max-w-2xl leading-relaxed opacity-90" data-lang-en="Creating innovative digital solutions with modern technology" data-lang-es="Creando soluciones digitales innovadoras con tecnología moderna">
+              Creating innovative digital solutions with modern technology
+            </p>
+            <div class="flex flex-wrap gap-4">
+              <a href="#contact" class="btn-primary" data-lang-en="Get in Touch" data-lang-es="Contactar">
+                <span>Get in Touch</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+              <a href="#projects" class="btn-secondary" data-lang-en="See My Work" data-lang-es="Ver Proyectos">
+                <span>See My Work</span>
+                <i class="fa-solid fa-eye"></i>
+              </a>
+              <a href="./assets/NormanSEC_CV_Eng.pdf" download class="btn-outline" data-lang-en="See CV" data-lang-es="Ver CV">
+                <span>See CV</span>
+                <i class="fa-solid fa-download"></i>
+              </a>
+            </div>
+          </div>
+          
+          <div class="lg:w-1/2 relative">
+            <div class="floating-element relative z-10">
+              <div class="profile-image-container">
+                <img src="./assets/portfoliopfp.jpeg" alt="Norman Alvarado" class="profile-image">
+              </div>
+              <div class="image-credits text-center mt-2">
+                <a href="https://www.instagram.com/samdoesarts/" target="_blank" class="text-xs opacity-70 hover:opacity-100 transition-opacity">
+                  Art by @samdoesarts <i class="fa-brands fa-instagram text-xs"></i>
+                </a>
+              </div>
+            </div>
+            <!-- Background decorative elements -->
+            <div class="absolute top-1/4 right-1/4 flex space-x-2 animate-float" style="animation-delay: 0.5s">
+              <span class="tech-chip">React</span>
+            </div>
+            <div class="absolute bottom-1/3 left-0 flex space-x-2 animate-float" style="animation-delay: 1s">
+              <span class="tech-chip">JavaScript</span>
+            </div>
+            <div class="absolute top-0 right-0 flex space-x-2 animate-float" style="animation-delay: 1.5s">
+              <span class="tech-chip">CSS</span>
+            </div>
+            <div class="absolute bottom-0 right-1/4 flex space-x-2 animate-float" style="animation-delay: 2s">
+              <span class="tech-chip">HTML</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <a href="#about" class="text-3xl opacity-50 hover:opacity-100 transition-opacity">
+          <i class="fa-solid fa-chevron-down"></i>
+        </a>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-50 dark:bg-gray-900">
+      <div class="container mx-auto px-4">
+        <div class="section-header">
+          <h2 class="section-title" data-lang-en="About Me" data-lang-es="Sobre Mí">About Me</h2>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
+          <div class="about-image-container relative">
+            <div class="about-image-frame">
+              <img src="https://i.ibb.co/tWBKdTG/Imagen-de-Whats-App-2025-04-21-a-las-23-23-31-840726d9.jpg" alt="About Me" class="about-image">
+            </div>
+          </div>
+          
+          <div>
+            <p class="text-lg mb-8 leading-relaxed" data-lang-en="Systems Engineering graduate with prior experience in sales, logistics and operations, bringing a practical perspective to troubleshooting and process optimization. Equipped with technical training in React, HTML, CSS, JavaScript, SQL and Figma. Passionate about solving real-world problems through technology and working effectively with clients and small development teams." data-lang-es="Titulado en Bachillerato en Ingeniería en Sistemas con experiencia previa en ventas, logística y operaciones, aportando una perspectiva práctica a la resolución de problemas y optimización de procesos. Con formación técnica en React, HTML, CSS, JavaScript, SQL y Figma. Apasionado por resolver problemas del mundo real a través de la tecnología y por trabajar eficazmente con clientes y pequeños equipos de desarrollo.">
+              Systems Engineering graduate with prior experience in sales, logistics and operations, bringing a practical perspective to troubleshooting and process optimization. Equipped with technical training in React, HTML, CSS, JavaScript, SQL and Figma. Passionate about solving real-world problems through technology and working effectively with clients and small development teams.
+            </p>
+            
+            <div class="grid grid-cols-3 gap-4 mb-8">
+              <div class="stat-card" data-counter="10">
+                <span class="stat-number">10<span class="text-primary">+</span></span>
+                <span class="stat-label" data-lang-en="Projects" data-lang-es="Proyectos">Projects</span>
+              </div>
+              <div class="stat-card" data-counter="4">
+                <span class="stat-number">4<span class="text-primary">+</span></span>
+                <span class="stat-label" data-lang-en="Years" data-lang-es="Años">Years</span>
+              </div>
+              <div class="stat-card" data-static="true">
+                <span class="stat-number">C1</span>
+                <span class="stat-label" data-lang-en="English" data-lang-es="Inglés">English</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20">
+      <div class="container mx-auto px-4">
+        <div class="section-header">
+          <h2 class="section-title" data-lang-en="My Skills" data-lang-es="Mis Habilidades">My Skills</h2>
+        </div>
+        
+        <div class="max-w-5xl mx-auto">
+          <div class="skills-container">
+            <!-- Frontend Development -->
+            <div class="skill-category">
+              <div class="skill-header">
+                <i class="fa-solid fa-code text-primary text-2xl"></i>
+                <h3 class="text-xl font-bold">Frontend Development</h3>
+              </div>
+              <div class="skill-list">
+                <div class="skill-item" data-skill="JavaScript" data-level="95">
+                  <div class="skill-info">
+                    <h4 class="skill-name">JavaScript</h4>
+                   
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-progress"></div>
+                  </div>
+                </div>
+                
+                <div class="skill-item" data-skill="TypeScript" data-level="85">
+                  <div class="skill-info">
+                    <h4 class="skill-name">TypeScript</h4>
+                    
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-progress"></div>
+                  </div>
+                </div>
+                
+                <div class="skill-item" data-skill="React" data-level="90">
+                  <div class="skill-info">
+                    <h4 class="skill-name">React</h4>
+                    
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-progress"></div>
+                  </div>
+                </div>
+                
+                <div class="skill-item" data-skill="HTML" data-level="95">
+                  <div class="skill-info">
+                    <h4 class="skill-name">HTML</h4>
+                    
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-progress"></div>
+                  </div>
+                </div>
+                
+                <div class="skill-item" data-skill="CSS" data-level="90">
+                  <div class="skill-info">
+                    <h4 class="skill-name">CSS</h4>
+                    
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-progress"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Other Useful Skills -->
+            <div class="skill-category">
+              <div class="skill-header">
+                <i class="fa-solid fa-gear text-secondary text-2xl"></i>
+                <h3 class="text-xl font-bold" data-lang-en="Other Useful Skills" data-lang-es="Otras Habilidades Útiles">Other Useful Skills</h3>
+              </div>
+              <div class="skill-list">
+                <div class="skill-item" data-skill="SQL" data-level="85">
+                  <div class="skill-info">
+                    <h4 class="skill-name">SQL</h4>
+                    
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-progress"></div>
+                  </div>
+                </div>
+                
+                <div class="skill-item" data-skill="Figma" data-level="75">
+                  <div class="skill-info">
+                    <h4 class="skill-name">Figma</h4>
+                    
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-progress"></div>
+                  </div>
+                </div>
+                
+                <div class="skill-item" data-skill="Git" data-level="85">
+                  <div class="skill-info">
+                    <h4 class="skill-name">Git</h4>
+                    
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-progress"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- AI Tools -->
+            <div class="skill-category">
+              <div class="skill-header">
+                <i class="fa-solid fa-robot text-primary text-2xl"></i>
+                <h3 class="text-xl font-bold" data-lang-en="AI Tools" data-lang-es="Herramientas IA">AI Tools</h3>
+              </div>
+              <div class="skill-list">
+                <div class="skill-item" data-skill="GitHub Copilot" data-level="75">
+                  <div class="skill-info">
+                    <h4 class="skill-name">GitHub Copilot</h4>
+                    
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-progress"></div>
+                  </div>
+                </div>
+                
+                <div class="skill-item" data-skill="ChatGPT" data-level="90">
+                  <div class="skill-info">
+                    <h4 class="skill-name">ChatGPT</h4>
+                    
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-progress"></div>
+                  </div>
+                </div>
+                
+                <div class="skill-item" data-skill="Cursor" data-level="95">
+                  <div class="skill-info">
+                    <h4 class="skill-name">Cursor</h4>
+                    
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-progress"></div>
+                  </div>
+                </div>
+
+                <div class="skill-item" data-skill="ChatGPT" data-level="90">
+                  <div class="skill-info">
+                    <h4 class="skill-name">ChatGPT</h4>
+                    
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-progress"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Soft Skills Section -->
+    <section id="soft-skills" class="py-20 bg-gray-50 dark:bg-gray-900">
+      <div class="container mx-auto px-4">
+        <div class="section-header">
+          <h2 class="section-title" data-lang-en="Soft Skills" data-lang-es="Habilidades Blandas">Soft Skills</h2>
+        </div>
+        
+        <div class="max-w-5xl mx-auto">
+          <p class="text-center mb-8 max-w-3xl mx-auto text-lg" data-lang-en="Beyond technical expertise, I bring valuable interpersonal and organizational skills to every project and team." data-lang-es="Más allá de la experiencia técnica, aporto valiosas habilidades interpersonales y organizativas a cada proyecto y equipo.">
+            Beyond technical expertise, I bring valuable interpersonal and organizational skills to every project and team.
+          </p>
+          
+          <div class="soft-skills-container">
+            <!-- Communication -->
+            <div class="soft-skill-module" data-skill="communication">
+              <div class="soft-skill-header">
+                <div class="soft-skill-icon-wrapper">
+                  <i class="fa-solid fa-comments"></i>
+                </div>
+                <h3 class="soft-skill-name" data-lang-en="Communication" data-lang-es="Comunicación">Communication</h3>
+                <div class="soft-skill-level">
+                  <div class="level-dots">
+                    <span class="dot active"></span>
+                    <span class="dot active"></span>
+                    <span class="dot active"></span>
+                    <span class="dot active"></span>
+                    <span class="dot active"></span>
+                  </div>
+                  <span class="level-text">5/5</span>
+                </div>
+              </div>
+              <div class="soft-skill-body">
+                <p data-lang-en="Strong verbal and written communication skills in both English and Spanish, with ability to explain technical concepts clearly to diverse audiences." data-lang-es="Fuertes habilidades de comunicación verbal y escrita tanto en inglés como en español, con capacidad para explicar conceptos técnicos claramente a diversos públicos.">
+                  Strong verbal and written communication skills in both English and Spanish, with ability to explain technical concepts clearly to diverse audiences.
+                </p>
+              </div>
+            </div>
+
+            <!-- Team Work & Collaboration -->
+            <div class="soft-skill-module" data-skill="teamwork">
+              <div class="soft-skill-header">
+                <div class="soft-skill-icon-wrapper">
+                  <i class="fa-solid fa-users"></i>
+                </div>
+                <h3 class="soft-skill-name" data-lang-en="Team Work & Collaboration" data-lang-es="Trabajo en Equipo y Colaboración">Team Work & Collaboration</h3>
+                <div class="soft-skill-level">
+                  <div class="level-dots">
+                    <span class="dot active"></span>
+                    <span class="dot active"></span>
+                    <span class="dot active"></span>
+                    <span class="dot active"></span>
+                    <span class="dot active"></span>
+                  </div>
+                  <span class="level-text">5/5</span>
+                </div>
+              </div>
+              <div class="soft-skill-body">
+                <p data-lang-en="Excellent ability to work collaboratively in cross-functional teams, share knowledge, and contribute to collective goals while fostering a positive environment." data-lang-es="Excelente capacidad para trabajar colaborativamente en equipos multifuncionales, compartir conocimientos y contribuir a metas colectivas fomentando un ambiente positivo.">
+                  Excellent ability to work collaboratively in cross-functional teams, share knowledge, and contribute to collective goals while fostering a positive environment.
+                </p>
+              </div>
+            </div>
+
+            <!-- Problem Solving & Critical Thinking -->
+            <div class="soft-skill-module" data-skill="problem-solving">
+              <div class="soft-skill-header">
+                <div class="soft-skill-icon-wrapper">
+                  <i class="fa-solid fa-lightbulb"></i>
+                </div>
+                <h3 class="soft-skill-name" data-lang-en="Problem Solving & Critical Thinking" data-lang-es="Resolución de Problemas y Pensamiento Crítico">Problem Solving & Critical Thinking</h3>
+                <div class="soft-skill-level">
+                  <div class="level-dots">
+                    <span class="dot active"></span>
+                    <span class="dot active"></span>
+                    <span class="dot active"></span>
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                  </div>
+                  <span class="level-text">4/5</span>
+                </div>
+              </div>
+              <div class="soft-skill-body">
+                <p data-lang-en="Analytical approach to challenges with ability to identify root causes and develop effective solutions through structured reasoning." data-lang-es="Enfoque analítico para los desafíos con capacidad para identificar causas fundamentales y desarrollar soluciones efectivas mediante un razonamiento estructurado.">
+                  Analytical approach to challenges with ability to identify root causes and develop effective solutions through structured reasoning.
+                </p>
+              </div>
+            </div>
+
+            <!-- Adaptability & Learning Ability -->
+            <div class="soft-skill-module" data-skill="adaptability">
+              <div class="soft-skill-header">
+                <div class="soft-skill-icon-wrapper">
+                  <i class="fa-solid fa-arrows-spin"></i>
+                </div>
+                <h3 class="soft-skill-name" data-lang-en="Adaptability & Learning Ability" data-lang-es="Adaptabilidad y Capacidad de Aprendizaje">Adaptability & Learning Ability</h3>
+                <div class="soft-skill-level">
+                  <div class="level-dots">
+                    <span class="dot active"></span>
+                    <span class="dot active"></span>
+                    <span class="dot active"></span>
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                  </div>
+                  <span class="level-text">4/5</span>
+                </div>
+              </div>
+              <div class="soft-skill-body">
+                <p data-lang-en="Quick to adapt to changing requirements and new technologies. Continuously seeking opportunities to expand knowledge and skills." data-lang-es="Rápido para adaptarse a requisitos cambiantes y nuevas tecnologías. Constantemente buscando oportunidades para expandir conocimientos y habilidades.">
+                  Quick to adapt to changing requirements and new technologies. Continuously seeking opportunities to expand knowledge and skills.
+                </p>
+              </div>
+            </div>
+
+            <!-- Patience & Diplomacy -->
+            <div class="soft-skill-module" data-skill="patience">
+              <div class="soft-skill-header">
+                <div class="soft-skill-icon-wrapper">
+                  <i class="fa-solid fa-handshake"></i>
+                </div>
+                <h3 class="soft-skill-name" data-lang-en="Patience & Diplomacy" data-lang-es="Paciencia y Diplomacia">Patience & Diplomacy</h3>
+                <div class="soft-skill-level">
+                  <div class="level-dots">
+                    <span class="dot active"></span>
+                    <span class="dot active"></span>
+                    <span class="dot active"></span>
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                  </div>
+                  <span class="level-text">4/5</span>
+                </div>
+              </div>
+              <div class="soft-skill-body">
+                <p data-lang-en="Calm and measured approach to challenges and interpersonal interactions. Able to navigate difficult situations with tact and understanding." data-lang-es="Enfoque tranquilo y mesurado ante los desafíos e interacciones interpersonales. Capaz de navegar situaciones difíciles con tacto y comprensión.">
+                  Calm and measured approach to challenges and interpersonal interactions. Able to navigate difficult situations with tact and understanding.
+                </p>
+              </div>
+            </div>
+
+            <!-- Time Management -->
+            <div class="soft-skill-module" data-skill="time-management">
+              <div class="soft-skill-header">
+                <div class="soft-skill-icon-wrapper">
+                  <i class="fa-solid fa-clock"></i>
+                </div>
+                <h3 class="soft-skill-name" data-lang-en="Time Management" data-lang-es="Gestión del Tiempo">Time Management</h3>
+                <div class="soft-skill-level">
+                  <div class="level-dots">
+                    <span class="dot active"></span>
+                    <span class="dot active"></span>
+                    <span class="dot active"></span>
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                  </div>
+                  <span class="level-text">4/5</span>
+                </div>
+              </div>
+              <div class="soft-skill-body">
+                <p data-lang-en="Efficient at prioritizing tasks and managing multiple projects with competing deadlines to ensure timely delivery of quality work." data-lang-es="Eficiente en la priorización de tareas y gestión de múltiples proyectos con plazos competitivos para garantizar la entrega oportuna de trabajo de calidad.">
+                  Efficient at prioritizing tasks and managing multiple projects with competing deadlines to ensure timely delivery of quality work.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Languages Section -->
+    <section id="languages" class="py-20 bg-gray-50 dark:bg-gray-900">
+      <div class="container mx-auto px-4">
+        <div class="section-header">
+          <h2 class="section-title" data-lang-en="Languages" data-lang-es="Idiomas">Languages</h2>
+        </div>
+        
+        <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
+          <!-- Spanish -->
+          <div class="language-card">
+            <div class="language-flag">🇪🇸</div>
+            <h3 class="language-name" data-lang-en="Spanish" data-lang-es="Español">Spanish</h3>
+            <p class="language-level" data-lang-en="Native" data-lang-es="Nativo">Native</p>
+            <div class="language-bar">
+              <div class="language-progress" style="width: 100%"></div>
+            </div>
+          </div>
+          
+          <!-- English -->
+          <div class="language-card">
+            <div class="language-flag">🇺🇸</div>
+            <h3 class="language-name" data-lang-en="English" data-lang-es="Inglés">English</h3>
+            <p class="language-level" data-lang-en="C1 Certified" data-lang-es="C1 certificado">C1 Certified</p>
+            <div class="language-bar">
+              <div class="language-progress" style="width: 90%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education Timeline -->
+    <section id="education" class="py-20">
+      <div class="container mx-auto px-4">
+        <div class="section-header">
+          <h2 class="section-title" data-lang-en="Education" data-lang-es="Educación">Education</h2>
+        </div>
+        
+        <div class="max-w-5xl mx-auto">
+          <div class="timeline">
+            <!-- Timeline Item 1 -->
+            <div class="timeline-item">
+              <div class="timeline-dot bg-primary">
+                <i class="fa-solid fa-graduation-cap"></i>
+              </div>
+              <div class="timeline-content">
+                <span class="timeline-date">2020 - 2021</span>
+                <h3 class="timeline-title" data-lang-en="International Baccalaureate (IB) Diploma" data-lang-es="Diploma en Bachillerato Internacional (BI)">International Baccalaureate (IB) Diploma</h3>
+                <h4 class="timeline-subtitle" data-lang-en="La Paz Community School" data-lang-es="La Paz Community School">La Paz Community School</h4>
+                <div class="timeline-description">
+                  <p class="mb-2 font-medium text-primary" data-lang-en="Specialized in:" data-lang-es="Especialización en:">Specialized in:</p>
+                  <ul class="list-disc pl-6 space-y-1">
+                    <li data-lang-en="IB English A: Language & Literature (High level)" data-lang-es="IB Inglés A: Lengua y Literatura (Nivel alto)">IB English A: Language & Literature (High level)</li>
+                    <li data-lang-en="IB Spanish A: Language & Literature (High level)" data-lang-es="IB Español A: Lengua y Literatura (Nivel alto)">IB Spanish A: Language & Literature (High level)</li>
+                    <li data-lang-en="IB Global Politics (High level)" data-lang-es="IB Política Global (Nivel alto)">IB Global Politics (High level)</li>
+                    <li data-lang-en="IB Business Management (Standard Level)" data-lang-es="IB Gestión Empresarial (Nivel estándar)">IB Business Management (Standard Level)</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Timeline Item 2 -->
+            <div class="timeline-item">
+              <div class="timeline-dot bg-secondary">
+                <i class="fa-solid fa-code"></i>
+              </div>
+              <div class="timeline-content">
+                <span class="timeline-date">2022 - 2024</span>
+                <h3 class="timeline-title" data-lang-en="Web Development Diploma" data-lang-es="Diploma en Desarrollo Web">Web Development Diploma</h3>
+                <h4 class="timeline-subtitle" data-lang-en="National University of Costa Rica" data-lang-es="Universidad Nacional de Costa Rica">National University of Costa Rica</h4>
+                <div class="timeline-description">
+                  <p class="mb-2 font-medium text-secondary" data-lang-en="Key achievements:" data-lang-es="Logros clave:">Key achievements:</p>
+                  <ul class="list-disc pl-6 space-y-1">
+                    <li data-lang-en="Proficiency in modern web technologies (HTML, CSS, JS, TS)" data-lang-es="Dominio en tecnologías web modernas (HTML, CSS, JS, TS)">Proficiency in modern web technologies (HTML, CSS, JS, TS)</li>
+                    <li data-lang-en="Backend development with C# and .NET" data-lang-es="Desarrollo backend con C# y .NET">Backend development with C# and .NET</li>
+                    <li data-lang-en="Agile frameworks and development methodologies" data-lang-es="Marcos ágiles y metodologías de desarrollo">Agile frameworks and development methodologies</li>
+                    <li data-lang-en="Functional application design and testing" data-lang-es="Diseño y prueba de aplicaciones funcionales">Functional application design and testing</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Timeline Item 3 -->
+            <div class="timeline-item">
+              <div class="timeline-dot bg-primary">
+                <i class="fa-solid fa-laptop-code"></i>
+              </div>
+              <div class="timeline-content">
+                <span class="timeline-date" data-lang-en="2022 - 2026" data-lang-es="2022 - 2026">2022 - 2026</span>
+                <h3 class="timeline-title" data-lang-en="Bachelor's Degree in Systems Engineering" data-lang-es="Bachillerato en Ingeniería en Sistemas">Bachelor's Degree in Systems Engineering</h3>
+                <h4 class="timeline-subtitle" data-lang-en="National University of Costa Rica" data-lang-es="Universidad Nacional de Costa Rica">National University of Costa Rica</h4>
+                <div class="timeline-description">
+                  <p class="mb-2 font-medium text-primary" data-lang-en="Focus areas:" data-lang-es="Áreas de enfoque:">Focus areas:</p>
+                  <ul class="list-disc pl-6 space-y-1">
+                    <li data-lang-en="Systems architecture and design" data-lang-es="Arquitectura y diseño de sistemas">Systems architecture and design</li>
+                    <li data-lang-en="Advanced software development methodologies" data-lang-es="Metodologías avanzadas de desarrollo de software">Advanced software development methodologies</li>
+                    <li data-lang-en="Database management and optimization" data-lang-es="Gestión y optimización de bases de datos">Database management and optimization</li>
+                    <li data-lang-en="Computer networking and infrastructure" data-lang-es="Redes informáticas e infraestructura">Computer networking and infrastructure</li>
+                    <li data-lang-en="Project lifecycle management" data-lang-es="Gestión del ciclo de vida del proyecto">Project lifecycle management</li>
+                  </ul>
+                  <p class="mt-4 font-medium text-primary" data-lang-en="Key project:" data-lang-es="Proyecto clave:">Key project:</p>
+                  <p data-lang-en="CTP La Mansión Digital - A comprehensive school management system that improved administrative processes by 100%" data-lang-es="CTP La Mansión Digital - Un sistema integral de gestión escolar que mejoró los procesos administrativos en un 100%">CTP La Mansión Digital - A comprehensive school management system that improved administrative processes by 100%</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-gray-50 dark:bg-gray-900">
+      <div class="container mx-auto px-4">
+        <div class="section-header">
+          <h2 class="section-title" data-lang-en="Experience" data-lang-es="Experiencia">Experience</h2>
+        </div>
+        
+        <div class="max-w-4xl mx-auto space-y-8">
+          <!-- Experience Card 1 -->
+          <div class="experience-card">
+            <div class="experience-header">
+              <div>
+                <h3 class="experience-title" data-lang-en="Front End Developer" data-lang-es="Desarrollador Front End">Front End Developer</h3>
+                <p class="experience-company">Freelance Remote</p>
+              </div>
+              <span class="experience-date">November 2025 - Present</span>
+            </div>
+            <div class="experience-content">
+              <ul class="list-disc pl-6 space-y-2 text-sm leading-relaxed">
+                <li data-lang-en="Developed and delivered custom websites for small and medium-sized businesses, tailoring functionality and design to client requirements." data-lang-es="Desarrollé y entregué sitios web personalizados para pequeñas y medianas empresas, adaptando la funcionalidad y el diseño a los requisitos del cliente.">Developed and delivered custom websites for small and medium-sized businesses, tailoring functionality and design to client requirements.</li>
+                <li data-lang-en="Collaborated directly with clients to gather requirements, provide updates, and implement feedback throughout development." data-lang-es="Colaboré directamente con clientes para recopilar requisitos, brindar actualizaciones e implementar retroalimentación durante todo el desarrollo.">Collaborated directly with clients to gather requirements, provide updates, and implement feedback throughout development.</li>
+                <li data-lang-en="Designed and implemented responsive and user-friendly interfaces to improve user experience across devices." data-lang-es="Diseñé e implementé interfaces responsivas y fáciles de usar para mejorar la experiencia en distintos dispositivos.">Designed and implemented responsive and user-friendly interfaces to improve user experience across devices.</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="experience-card">
+            <div class="experience-header">
+              <div>
+                <h3 class="experience-title" data-lang-en="Full Stack Developer" data-lang-es="Desarrollador Full Stack">Full Stack Developer</h3>
+                <p class="experience-company">Macro Remote</p>
+              </div>
+              <span class="experience-date">July 2025 - November 2025</span>
+            </div>
+            <div class="experience-content">
+              <ul class="list-disc pl-6 space-y-2 text-sm leading-relaxed">
+                <li data-lang-en="Developed and designed user authentication interfaces, including login, registration, and password reset features, with a focus on user experience and visual appeal." data-lang-es="Desarrollé y diseñé interfaces de autenticación de usuarios, incluyendo inicio de sesión, registro y restablecimiento de contraseña, con enfoque en experiencia de usuario y atractivo visual.">Developed and designed user authentication interfaces, including login, registration, and password reset features, with a focus on user experience and visual appeal.</li>
+                <li data-lang-en="Developed a microservice responsible for creating, updating, deleting, and categorizing client records." data-lang-es="Desarrollé un microservicio responsable de crear, actualizar, eliminar y categorizar registros de clientes.">Developed a microservice responsible for creating, updating, deleting, and categorizing client records.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="experience-card">
+            <div class="experience-header">
+              <div>
+                <h3 class="experience-title" data-lang-en="Full Stack Developer - Scrum Master" data-lang-es="Desarrollador Full Stack - Scrum Master">Full Stack Developer - Scrum Master</h3>
+                <p class="experience-company">CTP La Mansion Remote</p>
+              </div>
+              <span class="experience-date">February 2024 - June 2025</span>
+            </div>
+            <div class="experience-content">
+              <ul class="list-disc pl-6 space-y-2 text-sm leading-relaxed">
+                <li data-lang-en="Developed complete administrative interface serving 30+ employees, digitizing administrative processes and reducing paper usage by 60%." data-lang-es="Desarrollé una interfaz administrativa completa para más de 30 empleados, digitalizando procesos administrativos y reduciendo el uso de papel en un 60%.">Developed complete administrative interface serving 30+ employees, digitizing administrative processes and reducing paper usage by 60%.</li>
+                <li data-lang-en="Led and supported a small team of developers in an Agile environment, ensuring timely completion of sprint deliverables." data-lang-es="Lideré y apoyé a un pequeño equipo de desarrolladores en un entorno Ágil, asegurando la entrega puntual de los compromisos de cada sprint.">Led and supported a small team of developers in an Agile environment, ensuring timely completion of sprint deliverables.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20">
+      <div class="container mx-auto px-4">
+        <div class="section-header">
+          <h2 class="section-title" data-lang-en="Prominent projects" data-lang-es="Proyectos destacados">Projects</h2>
+        </div>
+        
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Project Card 1 -->
+          <div class="project-card">
+            <div class="project-image-container">
+              <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-slate-950 via-slate-800 to-emerald-900 text-white p-6 text-center">
+                <div>
+                  <i class="fa-solid fa-globe text-3xl mb-3 opacity-90"></i>
+                  <p class="text-xs uppercase tracking-[0.3em] opacity-70 mb-2">Blocked Content</p>
+                  <h3 class="text-lg font-bold break-all">Management System</h3>
+                </div>
+              </div>
+              <div class="project-overlay">
+                <div class="project-links">
+                  <a href="https://github.com/DavElizG/ctp-system" target="_blank" class="project-link" data-lang-en="Source Code" data-lang-es="Código Fuente">
+                    <i class="fa-brands fa-github"></i> <span data-lang-en="Source Code" data-lang-es="Código Fuente">Source Code</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="project-info">
+              <h3 class="project-title" data-lang-en="Management System for CTP La Mansión" data-lang-es="Sistema de Gestión para CTP La Mansión">Management System for CTP La Mansión</h3>
+              <p class="project-description" data-lang-en="Web application for managing room and laboratory requests, with booking, approval, and notification features." data-lang-es="Aplicación web para la gestión de solicitudes de salas y laboratorios, con características de reserva, aprobación y notificaciones.">
+                Web application for managing room and laboratory requests, with booking, approval, and notification features.
+              </p>
+              <div class="project-technologies">
+                <span class="project-tech">React</span>
+                <span class="project-tech">Tailwind CSS</span>
+                <span class="project-tech">.NET C#</span>
+                <span class="project-tech">MySQL</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Project Card 2 -->
+          <div class="project-card">
+            <div class="project-image-container">
+              <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-slate-950 via-slate-800 to-sky-900 text-white p-6 text-center">
+                <div>
+                  <i class="fa-solid fa-school text-3xl mb-3 opacity-90"></i>
+                  <p class="text-xs uppercase tracking-[0.3em] opacity-70 mb-2">Live Site</p>
+                  <h3 class="text-lg font-bold break-all">CTP La Mansión</h3>
+                </div>
+              </div>
+              <div class="project-overlay">
+                <div class="project-links">
+                  <a href="https://ctplamansion.com/" target="_blank" class="project-link" data-lang-en="Live Demo" data-lang-es="Ver Sitio">
+                    <i class="fa-solid fa-globe"></i> <span data-lang-en="Live Demo" data-lang-es="Ver Sitio">Live Demo</span>
+                  </a>
+                  <a href="https://github.com/majifo99/CTPMansion_Front.git" target="_blank" class="project-link" data-lang-en="Source Code" data-lang-es="Código Fuente">
+                    <i class="fa-brands fa-github"></i> <span data-lang-en="Source Code" data-lang-es="Código Fuente">Source Code</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="project-info">
+              <h3 class="project-title" data-lang-en="CTP La Mansión" data-lang-es="CTP La Mansión">CTP La Mansión</h3>
+              <p class="project-description" data-lang-en="Institutional website with academic information, gallery and interactive map. Developed with React, TypeScript and TailwindCSS." data-lang-es="Sitio web institucional con información académica, galería y mapa interactivo. Desarrollado con React, TypeScript y TailwindCSS.">
+                Institutional website with academic information, gallery and interactive map. Developed with React, TypeScript and TailwindCSS.
+              </p>
+              <div class="project-technologies">
+                <span class="project-tech">React</span>
+                <span class="project-tech">Tailwind CSS</span>
+                <span class="project-tech">.NET C#</span>
+                <span class="project-tech">MySQL</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Project Card 3 -->
+          <div class="project-card">
+            <div class="project-image-container">
+              <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-slate-950 via-slate-800 to-emerald-900 text-white p-6 text-center">
+                <div>
+                  <i class="fa-solid fa-globe text-3xl mb-3 opacity-90"></i>
+                  <p class="text-xs uppercase tracking-[0.3em] opacity-70 mb-2">Live Site</p>
+                  <h3 class="text-lg font-bold break-all">aquapoolbluecostarica.com</h3>
+                </div>
+              </div>
+              <div class="project-overlay">
+                <div class="project-links">
+                  <a href="https://aquapoolbluecostarica.com" target="_blank" class="project-link">
+                    <i class="fa-solid fa-globe"></i> <span>Live Demo</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="project-info">
+              <h3 class="project-title">Aquapool Blue Costa Rica</h3>
+              <p class="project-description" data-lang-en="Corporate website for pool and water systems services, focused on presenting offerings and contact details." data-lang-es="Sitio web corporativo para servicios de piscinas y sistemas de agua, enfocado en presentar servicios y datos de contacto.">
+                Corporate website for pool and water systems services, focused on presenting offerings and contact details.
+              </p>
+              <div class="project-technologies">
+                <span class="project-tech">React</span>
+                <span class="project-tech">React Router</span>
+                <span class="project-tech">TailwindCSS</span>
+                <span class="project-tech">JavaScript</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Card 5 -->
+          <div class="project-card">
+            <div class="project-image-container">
+              <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-slate-950 via-slate-800 to-cyan-900 text-white p-6 text-center">
+                <div>
+                  <i class="fa-solid fa-droplet text-3xl mb-3 opacity-90"></i>
+                  <p class="text-xs uppercase tracking-[0.3em] opacity-70 mb-2">Live Site</p>
+                  <h3 class="text-lg font-bold break-all">apbwatersystems.com</h3>
+                </div>
+              </div>
+              <div class="project-overlay">
+                <div class="project-links">
+                  <a href="https://apbwatersystems.com" target="_blank" class="project-link">
+                    <i class="fa-solid fa-globe"></i> <span>Live Demo</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="project-info">
+              <h3 class="project-title">APB Water Systems</h3>
+              <p class="project-description" data-lang-en="Business website for water system solutions, built to communicate services and strengthen online presence." data-lang-es="Sitio web comercial para soluciones de sistemas de agua, creado para comunicar servicios y fortalecer la presencia en línea.">
+                Business website for water system solutions, built to communicate services and strengthen online presence.
+              </p>
+              <div class="project-technologies">
+                <span class="project-tech">React</span>
+                <span class="project-tech">React Router</span>
+                <span class="project-tech">TailwindCSS</span>
+                <span class="project-tech">JavaScript</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Card 6 -->
+          <div class="project-card">
+            <div class="project-image-container">
+              <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-slate-950 via-slate-800 to-violet-900 text-white p-6 text-center">
+                <div>
+                  <i class="fa-solid fa-star text-3xl mb-3 opacity-90"></i>
+                  <p class="text-xs uppercase tracking-[0.3em] opacity-70 mb-2">Live Site</p>
+                  <h3 class="text-lg font-bold break-all">siduscostarica.netlify.app</h3>
+                </div>
+              </div>
+              <div class="project-overlay">
+                <div class="project-links">
+                  <a href="https://siduscostarica.netlify.app" target="_blank" class="project-link">
+                    <i class="fa-solid fa-globe"></i> <span>Live Demo</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="project-info">
+              <h3 class="project-title">Sidus Costa Rica</h3>
+              <p class="project-description" data-lang-en="Marketing website for a brand concept, designed to present services and generate inquiries." data-lang-es="Sitio de marketing para un concepto de marca, diseñado para presentar servicios y generar consultas.">
+                Marketing website for a brand concept, designed to present services and generate inquiries.
+              </p>
+              <div class="project-technologies">
+                <span class="project-tech">React</span>
+                <span class="project-tech">TailwindCSS</span>
+                <span class="project-tech">JavaScript</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Card 7 -->
+          <div class="project-card">
+            <div class="project-image-container">
+              <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-slate-950 via-slate-800 to-lime-900 text-white p-6 text-center">
+                <div>
+                  <i class="fa-solid fa-seedling text-3xl mb-3 opacity-90"></i>
+                  <p class="text-xs uppercase tracking-[0.3em] opacity-70 mb-2">Live Site</p>
+                  <h3 class="text-lg font-bold break-all">nambigardens.com</h3>
+                </div>
+              </div>
+              <div class="project-overlay">
+                <div class="project-links">
+                  <a href="https://nambigardens.com" target="_blank" class="project-link">
+                    <i class="fa-solid fa-globe"></i> <span>Live Demo</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="project-info">
+              <h3 class="project-title">Nambi Gardens</h3>
+              <p class="project-description" data-lang-en="Public-facing site for a gardening and landscape business, emphasizing services and contact access." data-lang-es="Sitio público para un negocio de jardinería y paisajismo, enfatizando servicios y acceso a contacto.">
+                Public-facing site for a gardening and landscape business, emphasizing services and contact access.
+              </p>
+              <div class="project-technologies">
+                <span class="project-tech">React</span>
+                <span class="project-tech">TailwindCSS</span>
+                <span class="project-tech">JavaScript</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-50 dark:bg-gray-900">
+      <div class="container mx-auto px-4">
+        <div class="section-header">
+          <h2 class="section-title" data-lang-en="Contact Me" data-lang-es="Contáctame">Contact Me</h2>
+        </div>
+        
+        <div class="max-w-5xl mx-auto">
+          <div class="flex justify-center">
+            <div class="contact-info max-w-lg w-full">
+              <h3 class="text-2xl font-bold mb-6 text-center" data-lang-en="Let's Work Together" data-lang-es="Trabajemos Juntos">Let's Work Together</h3>
+              <p class="mb-8 text-lg opacity-80 text-center" data-lang-en="Do you have a project in mind? Contact me through any of these channels" data-lang-es="¿Tienes un proyecto en mente? Contáctame a través de cualquiera de estos canales">
+                Do you have a project in mind? Contact me through any of these channels.
+              </p>
+              
+              <div class="space-y-6">
+                <!-- Email -->
+                <div class="contact-item">
+                  <div class="contact-icon">
+                    <i class="fa-solid fa-envelope"></i>
+                  </div>
+                  <div>
+                    <h4 class="contact-label" data-lang-en="Email" data-lang-es="Correo">Email</h4>
+                    <a href="mailto:n.alvarado.chaves@gmail.com" class="contact-value">n.alvarado.chaves@gmail.com</a>
+                  </div>
+                </div>
+                
+                <!-- GitHub -->
+                <div class="contact-item">
+                  <div class="contact-icon">
+                    <i class="fa-brands fa-github"></i>
+                  </div>
+                  <div>
+                    <h4 class="contact-label">GitHub</h4>
+                    <a href="https://github.com/NormanAlvarado" target="_blank" class="contact-value" data-lang-en="View Profile" data-lang-es="Ver Perfil">View Profile</a>
+                  </div>
+                </div>
+                
+                <!-- LinkedIn -->
+                <div class="contact-item">
+                  <div class="contact-icon">
+                    <i class="fa-brands fa-linkedin"></i>
+                  </div>
+                  <div>
+                    <h4 class="contact-label">LinkedIn</h4>
+                    <a href="https://www.linkedin.com/in/norman-alvarado-500724339/" target="_blank" class="contact-value" data-lang-en="Connect with me" data-lang-es="Conectar conmigo">Connect with me</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-10 border-t border-gray-200 dark:border-gray-800">
+    <div class="container mx-auto px-4 text-center">
+      <div class="mb-6">
+        <a href="#" class="text-2xl font-bold font-mono">
+          <span class="text-primary">N</span>orman
+        </a>
+      </div>
+      
+      <div class="flex justify-center space-x-6 mb-6">
+        <a href="mailto:n.alvarado.chaves@gmail.com" class="social-link">
+          <i class="fa-solid fa-envelope"></i>
+        </a>
+        <a href="https://github.com/NormanAlvarado" target="_blank" class="social-link">
+          <i class="fa-brands fa-github"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/norman-alvarado-500724339/" target="_blank" class="social-link">
+          <i class="fa-brands fa-linkedin"></i>
+        </a>
+      </div>
+      
+      <p class="text-sm opacity-60" data-lang-en="© 2025 Norman Alvarado. All rights reserved." data-lang-es="© 2025 Norman Alvarado. Todos los derechos reservados.">
+        © 2025 Norman Alvarado. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- Custom Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>
